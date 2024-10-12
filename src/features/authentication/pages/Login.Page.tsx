@@ -1,10 +1,15 @@
 import React from 'react';
+import LoginForm from '../components/LoginForm';
 
 const LoginPage: React.FC = () => {
   return (
-    <div>
-      <h2>Login page works</h2>
-    </div>
+    <section>
+
+      <h1 className="login__title">Square</h1>
+      <LoginForm />
+
+
+    </section>
   );
 };
 

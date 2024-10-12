@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import LoginPage from '../features/authentication/pages/Login.Page';
+import LoginPage from '../features/authentication/pages/LoginPage';
 import DashboardPage from '../features/dashboard/pages/DashboardPage';
 import PrivateRoute from './PrivateRoute';
 
-const AppRoutes: React.FC = () => (
+const AppRoutes: FC = () => (
   <Routes>
     <Route path="/" element={<Navigate to="/dashboard" />} />
     <Route path="/login" element={<LoginPage />} />

@@ -1,8 +1,8 @@
-import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import SquareField from '../../../shared/components/SquareField';
+import SquareButton from '../../../shared/components/SquareButton';
 import styles from './LoginForm.module.css';
 interface LoginFormInputs {
   email: string;
@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
     .matches(/^[a-zA-Z0-9]+$/, 'Password must contain only letters and numbers')
 });
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -39,8 +39,9 @@ const LoginForm: React.FC = () => {
         label="Email"
         type="email"
         id="email"
+        placeholder='example@youremail.com'
         {...register('email')}
-        aria-invalid={errors.email ? 'true' : 'false'}
+        aria-invalid={!!errors.email}
         aria-describedby="email-error"
         errorMessage={errors.email?.message || ''}
       />
@@ -48,14 +49,14 @@ const LoginForm: React.FC = () => {
         label="Password"
         type="password"
         id="password"
+        placeholder='Enter your password'
         {...register('password')}
-        aria-invalid={errors.password ? 'true' : 'false'}
+        aria-invalid={!!errors.password}
         aria-describedby="password-error"
         errorMessage={errors.password?.message || ''}
       />
-      <button type="submit">
-        Login
-      </button>
+      <br/>
+      <SquareButton type="submit">Submit</SquareButton>
     </form>
   );
 };

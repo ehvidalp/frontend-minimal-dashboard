@@ -1,0 +1,40 @@
+.squareField {
+    width: 100%;
+    border: 1px solid var(--gray-color);
+    height: 3rem;
+    background: var(--secondary-color);
+    color: var(--gray-color);
+    padding: 0 0.5rem;
+    font-family: 'Roboto Mono';
+    font-size: var(--font-xs);
+    box-sizing: border-box;
+  
+    &::placeholder {
+      color: var(--gray-color);
+    }
+  
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      color: var(--dark-color);
+    }
+  }
+  
+  .squareFieldLabel {
+    font-size: var(--font-sm);
+    font-family: "Roboto Mono";
+    font-weight: 500;
+    line-height: 1.1875rem;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .squareFieldMsjEerror {
+    display: block;
+    box-sizing: border-box;
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+    font-size: var(--font-xxs);
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+  }
+  

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { getRecords } from '../../../api/recordService';
 
 interface Comment {
@@ -21,8 +21,12 @@ const useFetchRecords = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const hasFetched = useRef(false);
 
   const fetchRecords = useCallback(async () => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     try {
       const data = await getRecords();
       setComments(data);

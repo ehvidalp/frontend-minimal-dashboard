@@ -1,0 +1,7 @@
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 30rem;
+    padding: 0 1rem;
+}

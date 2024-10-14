@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import SquareField from '../../../shared/components/SquareField';
-
+import styles from './LoginForm.module.css';
 interface LoginFormInputs {
   email: string;
   password: string;
@@ -11,11 +11,12 @@ interface LoginFormInputs {
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .required('El correo electrónico es obligatorio')
-    .email('Ingrese una dirección de correo válida'),
+    .required('Email is required')
+    .email('Email is invalid'),
   password: Yup.string()
-    .required('La contraseña es obligatoria')
-    .max(20, 'La contraseña debe tener menos de 20 caracteres'),
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters')
+    .matches(/^[a-zA-Z0-9]+$/, 'Password must contain only letters and numbers')
 });
 
 const LoginForm: React.FC = () => {
@@ -32,39 +33,26 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} aria-labelledby="login-form" role="form">
-      <div className="form-group">
-        <SquareField
-          label="Email"
-          type="email"
-          id="email"
-          {...register('email')}
-          aria-invalid={errors.email ? 'true' : 'false'}
-          aria-describedby="email-error"
-        />
-        {errors.email && (
-          <span id="email-error" role="alert" className="error-message">
-            {errors.email.message}
-          </span>
-        )}
-      </div>
-
-      <div className="form-group">
-        <SquareField
-          label="Password"
-          type="password"
-          id="password"
-          {...register('password')}
-          aria-invalid={errors.password ? 'true' : 'false'}
-          aria-describedby="password-error"
-        />
-        {errors.password && (
-          <span id="password-error" role="alert" className="error-message">
-            {errors.password.message}
-          </span>
-        )}
-      </div>
-
+    <form className={styles.loginFormContainer}
+      onSubmit={handleSubmit(onSubmit)} aria-labelledby="login-form" role="form">
+      <SquareField
+        label="Email"
+        type="email"
+        id="email"
+        {...register('email')}
+        aria-invalid={errors.email ? 'true' : 'false'}
+        aria-describedby="email-error"
+        errorMessage={errors.email?.message || ''}
+      />
+      <SquareField
+        label="Password"
+        type="password"
+        id="password"
+        {...register('password')}
+        aria-invalid={errors.password ? 'true' : 'false'}
+        aria-describedby="password-error"
+        errorMessage={errors.password?.message || ''}
+      />
       <button type="submit">
         Login
       </button>

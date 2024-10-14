@@ -1,6 +1,6 @@
 import styles from './SquareHeader.module.css';
-import logoutIcon from '../../assets/logout.svg';
-import { useAuth } from '../../context/AuthContext';
+import logoutIcon from '../../../assets/logout.svg';
+import { useAuth } from '../../../context/AuthContext';
 
 const SquareHeader = () => {
     const { logout } = useAuth();

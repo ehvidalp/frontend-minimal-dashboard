@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import SquareField from '../../../shared/components/SquareField';
-import SquareButton from '../../../shared/components/SquareButton';
+import SquareField from '../../../shared/components/SquareField/SquareField';
+import SquareButton from '../../../shared/components/SquareButton/SquareButton';
 import styles from './LoginForm.module.css';
 import { useAuth } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

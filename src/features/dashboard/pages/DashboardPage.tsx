@@ -1,5 +1,6 @@
-import SquareHeader from "../../../shared/components/SquareHeader";
+import SquareHeader from '../../../shared/components/SquareHeader/SquareHeader';
 import { useDashboardData, DashboardDataProvider } from '../hooks/useDashboardData';
+import SquareItem from "../../../shared/components/SquareItem/SquareItem";
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -12,11 +13,9 @@ const DashboardPage = () => {
         {loading && <p>Loading data ...</p>}
         {error && <p>{error}</p>}
         <ul className={styles.dashboardGrid}>
-          {comments.map((comment) => (
-            <li key={comment.id}>
-              <h1>{comment.id}</h1>
-              <h3>{comment.name}</h3>
-              <small>{comment.email}</small>
+          {comments.map(({id, name, email, body }) => (
+            <li key={id}>
+              <SquareItem title={id} subtitle={name} email={email} body={body}  />
             </li>
           ))}
         </ul>

@@ -4,4 +4,5 @@
     width: 100%;
     max-width: 30rem;
     padding: 0 1rem;
+    box-sizing: border-box;
 }

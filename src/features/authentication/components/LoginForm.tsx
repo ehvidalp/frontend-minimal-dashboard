@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -23,7 +22,7 @@ const validationSchema = Yup.object().shape({
     .matches(/^[a-zA-Z0-9]+$/, 'Password must contain only letters and numbers'),
 });
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 

@@ -1,10 +1,10 @@
-import React from 'react';
+import SquareHeader from "../../../shared/components/SquareHeader";
 
-const DashboardPage: React.FC = () => {
+const DashboardPage = () => {
   return (
-    <div>
-      <h2>Dashboard page works</h2>
-    </div>
+    <>
+      <SquareHeader />
+    </>
   );
 };
 
